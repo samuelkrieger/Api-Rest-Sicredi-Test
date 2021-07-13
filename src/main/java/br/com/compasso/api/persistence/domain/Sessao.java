@@ -63,6 +63,18 @@ public class Sessao {
 			this.pauta = pauta;
 		}
 
+		public Sessao(LocalDateTime dataAbertura, LocalDateTime dataFechamento, Pauta pauta) {
+			this.dataAbertura = dataAbertura;
+			this.dataFechamento = dataFechamento;
+			this.pauta = pauta;
+		}
+
+		public Sessao() {
+		
+		}
+
+	
+
 		
 		
 

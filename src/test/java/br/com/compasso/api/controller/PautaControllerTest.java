@@ -18,8 +18,11 @@ import org.springframework.test.web.servlet.MvcResult;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import br.com.compasso.api.model.request.PautaRequest;
+import br.com.compasso.api.model.response.PautaResponse;
 import br.com.compasso.api.persistence.domain.Pauta;
 import br.com.compasso.api.persistence.repository.PautaRepository;
+import br.com.compasso.api.service.PautaService;
 
 @AutoConfigureMockMvc
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -32,23 +35,39 @@ public class PautaControllerTest {
 	@MockBean
 	private PautaRepository repository;
 
+	@MockBean
+	private PautaService service;
+
 	@Test
 	public void pautaCriadaTest() throws Exception {
 
-		Pauta pauta = new Pauta("teste", "pauta");
-		String json = MAPPER.writeValueAsString(pauta);
+		PautaRequest request = new PautaRequest();
+		request.setDescricao("teste");
+		request.setTitulo("titulo");
+		PautaResponse response = new PautaResponse();
+		response.setDescricao("teste");
+		response.setTitulo("titulo");
+	
+		String json = MAPPER.writeValueAsString(response);
 
-		when(this.repository.save(any(Pauta.class))).thenReturn(pauta);
+		when(this.service.criarNovaPauta(request)).thenReturn(response);
 		MvcResult result = mockMvc.perform(post("/pauta").content(json).contentType(MediaType.APPLICATION_JSON_VALUE))
 				.andReturn();
 
-		MockHttpServletResponse response = result.getResponse();
-		assertNotNull(response);
-		assertEquals(200, response.getStatus());
+		MockHttpServletResponse responses = result.getResponse();
+		assertNotNull(responses);
+		assertEquals(200, responses.getStatus());
 	}
 
 	@Test
-	public void pautaEncontradaTest() throws Exception {
-			
+	public void pautaCriadaTestErro() throws Exception {
+		when(this.repository.save(any(Pauta.class))).thenReturn(null);
+		MvcResult result = mockMvc.perform(post("/pauta").contentType(MediaType.APPLICATION_JSON_VALUE)).andReturn();
+
+		MockHttpServletResponse response = result.getResponse();
+		assertNotNull(response);
+		assertEquals(400, response.getStatus());
 	}
+
+
 }

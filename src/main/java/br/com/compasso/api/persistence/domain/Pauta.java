@@ -45,7 +45,7 @@ public class Pauta {
 	}
 
 	public Pauta(String descricao, String titulo) {
-	
+		
 		this.descricao = descricao;
 		this.titulo = titulo;
 	}
