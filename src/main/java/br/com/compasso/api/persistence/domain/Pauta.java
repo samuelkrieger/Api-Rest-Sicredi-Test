@@ -43,6 +43,16 @@ public class Pauta {
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
+
+	public Pauta(String descricao, String titulo) {
+	
+		this.descricao = descricao;
+		this.titulo = titulo;
+	}
+
+	public Pauta() {
+
+	}
 	
 	
 	

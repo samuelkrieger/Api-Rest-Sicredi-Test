@@ -6,9 +6,6 @@ public class BadPautaException extends BadRequestException{
 		 super(String.format("invalid Pauta for name=%s", message));
 	}
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	
