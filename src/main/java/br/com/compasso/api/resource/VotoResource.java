@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.compasso.api.persistence.domain.OpcaoVotoEntity;
-import br.com.compasso.api.persistence.domain.VotoEntity;
+import br.com.compasso.api.persistence.entity.OpcaoVotoEntity;
+import br.com.compasso.api.persistence.entity.VotoEntity;
 import br.com.compasso.api.response.VotoCreatedResponse;
 import br.com.compasso.api.service.VotoService;
 import io.swagger.annotations.Api;
@@ -28,6 +28,8 @@ public class VotoResource {
 
 	@Autowired
 	private VotoService service;
+
+	
 
 	@PostMapping("/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
@@ -54,6 +56,11 @@ public class VotoResource {
 
 	}
 
+	@GetMapping("/all")
+	public ResponseEntity<String> getVotosa() {
+		String responses = service.resultado();
+    	return ResponseEntity.ok(responses);
 
+	}
 
 }

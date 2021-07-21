@@ -12,8 +12,8 @@ import br.com.compasso.api.error.BadSessaoException;
 import br.com.compasso.api.mapper.CommonMapper;
 import br.com.compasso.api.model.PautaRequest;
 import br.com.compasso.api.model.SessaoRequest;
-import br.com.compasso.api.persistence.domain.PautaEntity;
-import br.com.compasso.api.persistence.domain.SessaoEntity;
+import br.com.compasso.api.persistence.entity.PautaEntity;
+import br.com.compasso.api.persistence.entity.SessaoEntity;
 import br.com.compasso.api.persistence.repository.SessaoRepository;
 import br.com.compasso.api.service.SessaoService;
 

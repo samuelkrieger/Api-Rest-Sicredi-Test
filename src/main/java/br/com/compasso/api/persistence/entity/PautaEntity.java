@@ -1,6 +1,4 @@
-package br.com.compasso.api.persistence.domain;
-
-import java.util.function.Function;
+package br.com.compasso.api.persistence.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,9 +22,7 @@ public class PautaEntity {
     @Column(name = "titulo")
     private String titulo;
 
-    public <R> R map(Function<PautaEntity, R> function){
-        return function.apply(this);
-    }
+ 
 
 	public String getDescricao() {
 		return descricao;

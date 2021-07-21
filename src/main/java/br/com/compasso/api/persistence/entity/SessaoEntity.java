@@ -1,7 +1,6 @@
-package br.com.compasso.api.persistence.domain;
+package br.com.compasso.api.persistence.entity;
 
 import java.time.LocalDateTime;
-import java.util.function.Function;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -35,9 +34,6 @@ public class SessaoEntity {
 	    private PautaEntity pauta;
 
 	
-	    public <R> R map(Function<SessaoEntity, R> function){
-	        return function.apply(this);
-	    }
 
 		public LocalDateTime getDataAbertura() {
 			return dataAbertura;

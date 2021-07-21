@@ -2,7 +2,7 @@ package br.com.compasso.api.response;
 
 import org.springframework.http.HttpStatus;
 
-import br.com.compasso.api.persistence.domain.PautaEntity;
+import br.com.compasso.api.persistence.entity.PautaEntity;
 
 public class PautaFoundResponse extends Response<PautaEntity>{
 

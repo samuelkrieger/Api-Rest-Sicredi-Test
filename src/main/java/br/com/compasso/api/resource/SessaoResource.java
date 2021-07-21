@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.compasso.api.persistence.domain.PautaEntity;
+import br.com.compasso.api.persistence.entity.PautaEntity;
 import br.com.compasso.api.response.SessaoCreatedResponse;
 import br.com.compasso.api.response.SessaoFoundResponse;
 import br.com.compasso.api.service.SessaoService;
@@ -27,6 +27,8 @@ public class SessaoResource {
 
 	@Autowired
 	private SessaoService service;
+	
+	
 
 	@PostMapping()
 	@ResponseStatus(HttpStatus.CREATED)

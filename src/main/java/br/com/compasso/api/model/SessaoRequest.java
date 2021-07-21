@@ -2,7 +2,7 @@ package br.com.compasso.api.model;
 
 import java.time.LocalDateTime;
 
-import br.com.compasso.api.persistence.domain.PautaEntity;
+import br.com.compasso.api.persistence.entity.PautaEntity;
 
 public class SessaoRequest {
 	private Long id;

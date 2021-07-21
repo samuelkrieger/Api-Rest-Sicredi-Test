@@ -4,8 +4,8 @@ import org.springframework.stereotype.Component;
 
 import br.com.compasso.api.model.PautaRequest;
 import br.com.compasso.api.model.SessaoRequest;
-import br.com.compasso.api.persistence.domain.PautaEntity;
-import br.com.compasso.api.persistence.domain.SessaoEntity;
+import br.com.compasso.api.persistence.entity.PautaEntity;
+import br.com.compasso.api.persistence.entity.SessaoEntity;
 @Component
 public class CommonMapper {
 

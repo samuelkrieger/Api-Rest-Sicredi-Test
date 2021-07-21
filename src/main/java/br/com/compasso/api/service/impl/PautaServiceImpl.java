@@ -11,7 +11,7 @@ import br.com.compasso.api.error.BadPautaException;
 import br.com.compasso.api.error.PautaNotFoundException;
 import br.com.compasso.api.mapper.CommonMapper;
 import br.com.compasso.api.model.PautaRequest;
-import br.com.compasso.api.persistence.domain.PautaEntity;
+import br.com.compasso.api.persistence.entity.PautaEntity;
 import br.com.compasso.api.persistence.repository.PautaRepository;
 import br.com.compasso.api.service.PautaService;
 

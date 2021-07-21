@@ -1,6 +1,7 @@
 package br.com.compasso.api.service.impl;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -9,9 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.compasso.api.error.BadVotoException;
-import br.com.compasso.api.persistence.domain.OpcaoVotoEntity;
-import br.com.compasso.api.persistence.domain.SessaoEntity;
-import br.com.compasso.api.persistence.domain.VotoEntity;
+import br.com.compasso.api.persistence.entity.OpcaoVotoEntity;
+import br.com.compasso.api.persistence.entity.SessaoEntity;
+import br.com.compasso.api.persistence.entity.VotoEntity;
 import br.com.compasso.api.persistence.repository.PautaRepository;
 import br.com.compasso.api.persistence.repository.SessaoRepository;
 import br.com.compasso.api.persistence.repository.VotoRepository;
@@ -53,6 +54,22 @@ public class VotoServiceImpl implements VotoService {
 		return votoRepository.findAll();
 	}
 
-	
+	@Override
+	public String resultado() {
+		List<VotoEntity> listSim = new ArrayList<>();
+		List<VotoEntity> listNao = new ArrayList<>();
+
+		listSim.addAll(votoRepository.findAllOpcaoVotoSim());
+		listNao.addAll(votoRepository.findAllOpcaoVotoNao());
+		if (listSim.size() > listNao.size()) {
+			return "Sim ganhou";
+		}
+		if (listSim.size() < listNao.size()) {
+			return "Nao ganhou";
+		}
+
+		return "empatado";
+
+	}
 
 }
