@@ -2,14 +2,14 @@ package br.com.compasso.api.service;
 
 import java.util.List;
 
-import br.com.compasso.api.persistence.domain.OpcaoVoto;
-import br.com.compasso.api.persistence.domain.Voto;
+import br.com.compasso.api.persistence.domain.OpcaoVotoEntity;
+import br.com.compasso.api.persistence.domain.VotoEntity;
 
 public interface VotoService {
 	  
-    Voto  votar(Long id, OpcaoVoto opcao);
+    VotoEntity  votar(Long id, OpcaoVotoEntity opcao);
 
-    List<Voto> getAll();
+    List<VotoEntity> getAll();
 
 	String resultado();
 

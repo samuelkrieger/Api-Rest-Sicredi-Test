@@ -14,28 +14,28 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "votos")
-public class Voto {
+public class VotoEntity {
 		@Id
 		@GeneratedValue(strategy = GenerationType.AUTO)
 		private Long id;
 
 	    @Column(name="opcao")
-	    private OpcaoVoto opcaoVoto;
+	    private OpcaoVotoEntity opcaoVoto;
 
 	    @Column(name="data")
 	    private LocalDateTime dataHora;
 
 	    @ManyToOne(cascade=CascadeType.PERSIST)
 	    @JoinColumn(name="id_sessao")
-	    private Sessao sessao;
+	    private SessaoEntity sessao;
 
 	
 
-		public OpcaoVoto getOpcaoVoto() {
+		public OpcaoVotoEntity getOpcaoVoto() {
 			return opcaoVoto;
 		}
 
-		public void setOpcaoVoto(OpcaoVoto opcaoVoto) {
+		public void setOpcaoVoto(OpcaoVotoEntity opcaoVoto) {
 			this.opcaoVoto = opcaoVoto;
 		}
 
@@ -49,11 +49,11 @@ public class Voto {
 
 
 		
-		public Sessao getSessao() {
+		public SessaoEntity getSessao() {
 			return sessao;
 		}
 
-		public void setSessao(Sessao sessao) {
+		public void setSessao(SessaoEntity sessao) {
 			this.sessao = sessao;
 		}
 

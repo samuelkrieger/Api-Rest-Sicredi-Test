@@ -1,14 +1,14 @@
 package br.com.compasso.api.service;
 
-import java.time.LocalDateTime;
 import java.util.Optional;
 
-import br.com.compasso.api.model.request.PautaRequest;
-import br.com.compasso.api.model.response.SessaoResponse;
+import br.com.compasso.api.model.SessaoRequest;
+import br.com.compasso.api.persistence.domain.PautaEntity;
+import br.com.compasso.api.persistence.domain.SessaoEntity;
 
 public interface SessaoService {
 
-	SessaoResponse criarNovaSessao(PautaRequest request,LocalDateTime fechamento); 
+	SessaoRequest criarNovaSessao(PautaEntity entity); 
 	
-	Optional<SessaoResponse> getSessaoId(Long id);
+	Optional<SessaoEntity> getSessaoId(Long id);
 }

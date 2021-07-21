@@ -1,4 +1,4 @@
-package br.com.compasso.api.controller;
+package br.com.compasso.api.resource;
 
 import java.util.List;
 
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.compasso.api.persistence.domain.OpcaoVoto;
-import br.com.compasso.api.persistence.domain.Voto;
+import br.com.compasso.api.persistence.domain.OpcaoVotoEntity;
+import br.com.compasso.api.persistence.domain.VotoEntity;
 import br.com.compasso.api.service.VotoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -23,7 +23,7 @@ import io.swagger.annotations.ApiResponses;
 @RestController
 @Api(value = "voto")
 @RequestMapping("/voto")
-public class VotoController {
+public class VotoResource {
 	
 	@Autowired
 	private VotoService service;
@@ -42,7 +42,7 @@ public class VotoController {
     			response = ResponseEntity.class),
 	@ApiResponse(code = 400, 
 				message = "Voto-error"), })
-    public ResponseEntity<Voto > votar(@PathVariable("id") String id, OpcaoVoto opcao ){
+    public ResponseEntity<VotoEntity > votar(@PathVariable("id") String id, OpcaoVotoEntity opcao ){
     	Long ids=Long.parseLong(id);
 		return ResponseEntity.ok(service.votar(ids, opcao));
     	
@@ -60,8 +60,8 @@ public class VotoController {
     @ApiResponses({ 
     	@ApiResponse(code = 200, message = "Votos-encontradas", response = ResponseEntity.class),
 	@ApiResponse(code = 404, message = "Votos-nao-encontradas", response = ResponseEntity.class), })
-    public ResponseEntity<List<Voto>> getVotos(){
-    	List<Voto> responses = service.getAll();
+    public ResponseEntity<List<VotoEntity>> getVotos(){
+    	List<VotoEntity> responses = service.getAll();
     	return ResponseEntity.ok(responses);
     	
     }

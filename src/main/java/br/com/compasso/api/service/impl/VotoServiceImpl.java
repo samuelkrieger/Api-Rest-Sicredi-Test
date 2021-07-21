@@ -11,9 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.compasso.api.error.BadVotoException;
-import br.com.compasso.api.persistence.domain.OpcaoVoto;
-import br.com.compasso.api.persistence.domain.Sessao;
-import br.com.compasso.api.persistence.domain.Voto;
+import br.com.compasso.api.persistence.domain.OpcaoVotoEntity;
+import br.com.compasso.api.persistence.domain.SessaoEntity;
+import br.com.compasso.api.persistence.domain.VotoEntity;
 import br.com.compasso.api.persistence.repository.PautaRepository;
 import br.com.compasso.api.persistence.repository.SessaoRepository;
 import br.com.compasso.api.persistence.repository.VotoRepository;
@@ -34,11 +34,11 @@ public class VotoServiceImpl implements VotoService {
 	private SessaoRepository sessaoRepository;
 
 	@Override
-	public Voto votar(Long id, OpcaoVoto opcao) {
+	public VotoEntity votar(Long id, OpcaoVotoEntity opcao) {
 
 		try {
-			Voto voto = new Voto();
-			Sessao sessao = sessaoRepository.findByPauta(pautaRepository.findById(id).get());
+			VotoEntity voto = new VotoEntity();
+			SessaoEntity sessao = sessaoRepository.findByPauta(pautaRepository.findById(id).get());
 			voto.setOpcaoVoto(opcao);
 			voto.setSessao(sessao);
 			voto.setDataHora(LocalDateTime.now());
@@ -51,14 +51,14 @@ public class VotoServiceImpl implements VotoService {
 	}
 
 	@Override
-	public List<Voto> getAll() {
+	public List<VotoEntity> getAll() {
 		return votoRepository.findAll();
 	}
 
 	@Override
 	public String resultado() {
-		List<Voto> listSim = new ArrayList<>();
-		List<Voto> listNao = new ArrayList<>();
+		List<VotoEntity> listSim = new ArrayList<>();
+		List<VotoEntity> listNao = new ArrayList<>();
 
 		listSim.addAll(votoRepository.findAllOpcaoVotoSim());
 		listNao.addAll(votoRepository.findAllOpcaoVotoNao());

@@ -14,7 +14,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "sessoes_votacao")
-public class Sessao {
+public class SessaoEntity {
 
 	
 		
@@ -32,10 +32,10 @@ public class Sessao {
 
 
 	    @OneToOne(cascade=CascadeType.PERSIST)
-	    private Pauta pauta;
+	    private PautaEntity pauta;
 
 	
-	    public <R> R map(Function<Sessao, R> function){
+	    public <R> R map(Function<SessaoEntity, R> function){
 	        return function.apply(this);
 	    }
 
@@ -55,25 +55,25 @@ public class Sessao {
 			this.dataFechamento = dataFechamento;
 		}
 
-		public Pauta getPauta() {
+		public PautaEntity getPauta() {
 			return pauta;
 		}
 
-		public void setPauta(Pauta pauta) {
+		public void setPauta(PautaEntity pauta) {
 			this.pauta = pauta;
 		}
 
-		public Sessao(LocalDateTime dataAbertura, LocalDateTime dataFechamento, Pauta pauta) {
+		public SessaoEntity(LocalDateTime dataAbertura, LocalDateTime dataFechamento, PautaEntity pauta) {
 			this.dataAbertura = dataAbertura;
 			this.dataFechamento = dataFechamento;
 			this.pauta = pauta;
 		}
 
-		public Sessao() {
+		public SessaoEntity() {
 		
 		}
 
-	
+		
 
 		
 		

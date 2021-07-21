@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="pauta")
-public class Pauta {
+public class PautaEntity {
 
 	
 	@Id
@@ -24,7 +24,7 @@ public class Pauta {
     @Column(name = "titulo")
     private String titulo;
 
-    public <R> R map(Function<Pauta, R> function){
+    public <R> R map(Function<PautaEntity, R> function){
         return function.apply(this);
     }
 
@@ -44,13 +44,13 @@ public class Pauta {
 		this.titulo = titulo;
 	}
 
-	public Pauta(String descricao, String titulo) {
+	public PautaEntity(String descricao, String titulo) {
 		
 		this.descricao = descricao;
 		this.titulo = titulo;
 	}
 
-	public Pauta() {
+	public PautaEntity() {
 
 	}
 	

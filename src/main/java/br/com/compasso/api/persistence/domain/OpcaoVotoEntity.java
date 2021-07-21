@@ -1,6 +1,6 @@
 package br.com.compasso.api.persistence.domain;
 
-public enum OpcaoVoto {
+public enum OpcaoVotoEntity {
 
     NAO, SIM
 }

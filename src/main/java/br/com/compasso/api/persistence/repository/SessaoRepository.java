@@ -2,11 +2,11 @@ package br.com.compasso.api.persistence.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import br.com.compasso.api.persistence.domain.Pauta;
-import br.com.compasso.api.persistence.domain.Sessao;
+import br.com.compasso.api.persistence.domain.PautaEntity;
+import br.com.compasso.api.persistence.domain.SessaoEntity;
 
-public interface SessaoRepository extends JpaRepository<Sessao, Long>{
-	Sessao  findByPauta (Pauta  pauta );
+public interface SessaoRepository extends JpaRepository<SessaoEntity, Long>{
+	SessaoEntity  findByPauta (PautaEntity  pauta );
 	
 	
 }

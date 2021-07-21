@@ -1,6 +1,5 @@
-package br.com.compasso.api.controller;
+package br.com.compasso.api.resource;
 
-import java.time.LocalDateTime;
 import java.util.Optional;
 
 import javax.websocket.server.PathParam;
@@ -15,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.compasso.api.model.SessaoResponse;
 import br.com.compasso.api.model.request.PautaRequest;
-import br.com.compasso.api.model.response.SessaoResponse;
 import br.com.compasso.api.service.SessaoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -26,7 +25,7 @@ import io.swagger.annotations.ApiResponses;
 @RestController
 @Api(value = "sessao")
 @RequestMapping("/sessao")
-public class SessaoController {
+public class SessaoResource {
 
 	@Autowired
 	private SessaoService service;
@@ -39,8 +38,8 @@ public class SessaoController {
 			@ApiResponse(code = 400, message = "sessao-error"), })
 
 	public ResponseEntity<SessaoResponse> criarSessao(@PathParam("idPauta") PautaRequest request) {
-		LocalDateTime fechamento = LocalDateTime.now().plusMinutes(1);
-		return ResponseEntity.ok(service.criarNovaSessao(request, fechamento));
+	
+		return ResponseEntity.ok(service.criarNovaSessao(request));
 	}
 	
 	@GetMapping("/sessoes/{id}")
