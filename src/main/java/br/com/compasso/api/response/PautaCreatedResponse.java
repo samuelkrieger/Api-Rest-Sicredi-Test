@@ -7,7 +7,7 @@ import br.com.compasso.api.persistence.domain.PautaEntity;
 public class PautaCreatedResponse extends Response<PautaEntity> {
 
 	public PautaCreatedResponse( PautaEntity result) {
-		super("product-created", "", HttpStatus.CREATED, result);
+		super("pauta-criada", "", HttpStatus.CREATED, result);
 	}
 	
 	

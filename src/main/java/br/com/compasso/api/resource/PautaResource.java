@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.compasso.api.persistence.domain.PautaEntity;
 import br.com.compasso.api.response.PautaCreatedResponse;
+import br.com.compasso.api.response.PautaFoundAllResponse;
+import br.com.compasso.api.response.PautaFoundResponse;
 import br.com.compasso.api.service.PautaService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -42,24 +44,25 @@ public class PautaResource {
 
 	@GetMapping("/{id}")
 	@ResponseStatus(HttpStatus.OK)
-	@ApiOperation(value = "Encontrar Pauta pelo ID", nickname = "find", notes = "Encontrar Pauta existente pelo ID", response = ResponseEntity.class, tags = {
+	@ApiOperation(value = "Encontrar Pauta pelo ID", nickname = "find", notes = "Encontrar Pauta existente pelo ID", response = PautaFoundResponse.class, tags = {
 			"Find" })
-	@ApiResponses({ @ApiResponse(code = 200, message = "pauta-encontrada", response = ResponseEntity.class),
-			@ApiResponse(code = 404, message = "pauta-nao-encontrada", response = ResponseEntity.class), })
-	public ResponseEntity<PautaEntity> getPauta(@PathVariable("id") Long id) {
+	@ApiResponses({ @ApiResponse(code = 200, message = "pauta-encontrada", response = PautaFoundResponse.class),
+			@ApiResponse(code = 404, message = "pauta-nao-encontrada", response = PautaFoundResponse.class), })
+	public PautaFoundResponse getPauta(@PathVariable("id") Long id) {
 		PautaEntity response = service.get(id);
-		return response.map(ResponseEntity::ok);
+		response.map(ResponseEntity::ok);
+		return new PautaFoundResponse(response);
 	}
 
 	@GetMapping("/")
 	@ResponseStatus(HttpStatus.OK)
-	@ApiOperation(value = "Encontrar todas as Pautas", nickname = "findAll", notes = "Encontrar todas as Pautas existentes", response = ResponseEntity.class, tags = {
+	@ApiOperation(value = "Encontrar todas as Pautas", nickname = "findAll", notes = "Encontrar todas as Pautas existentes", response = PautaFoundAllResponse.class, tags = {
 			"FindAll" })
-	@ApiResponses({ @ApiResponse(code = 200, message = "pautas-encontradas", response = ResponseEntity.class),
-			@ApiResponse(code = 404, message = "pautas-nao-encontradas", response = ResponseEntity.class), })
-	public ResponseEntity<List<PautaEntity>> getPautas() {
+	@ApiResponses({ @ApiResponse(code = 200, message = "pautas-encontradas", response = PautaFoundAllResponse.class),
+			@ApiResponse(code = 404, message = "pautas-nao-encontradas", response = PautaFoundAllResponse.class), })
+	public PautaFoundAllResponse getPautas() {
 		List<PautaEntity> responses = service.getAll();
-		return ResponseEntity.ok(responses);
+		return new PautaFoundAllResponse((PautaEntity) responses);
 
 	}
 

@@ -1,8 +1,6 @@
 package br.com.compasso.api.service.impl;
 
 import java.time.LocalDateTime;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -55,21 +53,6 @@ public class VotoServiceImpl implements VotoService {
 		return votoRepository.findAll();
 	}
 
-	@Override
-	public String resultado() {
-		List<VotoEntity> listSim = new ArrayList<>();
-		List<VotoEntity> listNao = new ArrayList<>();
-
-		listSim.addAll(votoRepository.findAllOpcaoVotoSim());
-		listNao.addAll(votoRepository.findAllOpcaoVotoNao());
-		if (listSim.size() > listNao.size()) {
-			return "Sim ganhou";
-		}
-		if (listSim.size() < listNao.size()) {
-			return "Nao ganhou";
-		}
-
-		return "empatado";
-	}
+	
 
 }

@@ -11,7 +11,6 @@ public interface VotoService {
 
     List<VotoEntity> getAll();
 
-	String resultado();
-
+	
 
 }

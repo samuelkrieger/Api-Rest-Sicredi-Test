@@ -1,10 +1,12 @@
 package br.com.compasso.api.mapper;
 
+import org.springframework.stereotype.Component;
+
 import br.com.compasso.api.model.PautaRequest;
 import br.com.compasso.api.model.SessaoRequest;
 import br.com.compasso.api.persistence.domain.PautaEntity;
 import br.com.compasso.api.persistence.domain.SessaoEntity;
-
+@Component
 public class CommonMapper {
 
 	public PautaRequest mapPautaRequest(PautaEntity pautaEntity) {
